@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-image text-center">
-                        <img class="w-40" src="{{ $post->post_image }}" alt="">
+                        <img class="w-40" src="{{ asset('/storage') . '/' . $post->post_image }}" alt="">
                     </div>
                     <div class="card-title">
                         <h2>

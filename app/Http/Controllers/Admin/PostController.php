@@ -7,6 +7,7 @@ use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -42,6 +43,8 @@ class PostController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::id();
         $data['post_date'] = new DateTime();
+        $img_path = Storage::put('uploads', $data['post_image']);
+        $data['post_image'] = $img_path;
         Post::create($data);
         return redirect()->ruote('admin.posts.index')->with('Il post.'.$data["title"]. 'has been created succesfully');
     }
